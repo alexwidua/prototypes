@@ -92,7 +92,7 @@ struct ContentView: View {
                     .fill(.white)
                     .frame(width: ellipseWidth, height: ellipseHeight)
                 Ellipse()
-                    .fill(.red)
+                    .fill(.black)
                     .frame(width: ellipseWidth, height: ellipseHeight)
                     .offset(x: offsetX, y: offsetY)
                     // 'reset' accelerometer on tap

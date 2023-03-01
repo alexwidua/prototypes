@@ -45,6 +45,11 @@ footer a:hover {
   width: 300px;
   height: 100px;
   position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.button-container.pressed {
+  transform: translateZ(0) scale(0.95);
 }
 
 .button {
@@ -59,7 +64,6 @@ footer a:hover {
 }
 
 .button.pressed {
-  transform: translateZ(0) scale(0.95);
   box-shadow: 0px -4px 1px rgba(255, 255, 255, 0.5),
     0px -1px 1px rgba(0, 0, 0, 0.5), 0px -4px 1px rgba(255, 255, 255, 0.5),
     0px 4px 1px rgba(255, 255, 255, 0.5), 0px 1px 1px rgba(0, 0, 0, 0.5),
@@ -110,6 +114,7 @@ footer a:hover {
   height: 100%;
   transform: scaleX(-1);
   object-fit: cover;
+  opacity: 0.7;
 }
 
 /* subtle reflecting surrounding the button */
@@ -123,7 +128,7 @@ footer a:hover {
   transform: translate(-50%, -50%) scaleX(-1);
   object-fit: fill;
   filter: blur(24px);
-  opacity: 0.3;
+  opacity: 0.45;
   transition: opacity var(--transition), transform var(--transition);
 }
 

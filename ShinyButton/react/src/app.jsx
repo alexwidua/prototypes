@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <Button roughness={0.6} offset={-200}>
+        <Button roughness={0.5} offset={-200}>
           Button
         </Button>
       </div>
@@ -37,20 +37,25 @@ function App() {
 function Button({ roughness = 0, offset = 0, children }) {
   const cameraWidth = 600;
   const cameraHeight = 600;
-
   const reflectionRef = useRef(null);
   const surfaceReflectionRef = useRef(null);
   const [cameraFacingMode, setCameraFacingMode] = useState("user");
-
   const detailsContainerRef = useRef(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [buttonFocus, setButtonFocus] = useState(false);
   const [buttonPressed, setButtonPressed] = useState(false);
   const [textHover, setTextHover] = useState(false);
-
   const [fingerprints, setFingerprints] = useState([]);
-
   const mappedRoughness = Math.round(scale(roughness, 0, 1, 0, 16));
+
+  // hacky bandaid solution until I figure out a better fix
+  // (in chrome, applying border-radius/overflow:hidden to the .details-container div breaks the mask-image)
+  const [showBorderRadius, setShowBorderRadius] = useState(false);
+  useEffect(() => {
+    if (!navigator.userAgent.includes("Chrome")) {
+      setShowBorderRadius(true);
+    }
+  }, []);
 
   // set up video stream
   useEffect(() => {
@@ -120,12 +125,17 @@ function Button({ roughness = 0, offset = 0, children }) {
 
   return (
     <div
-      className="button-container"
+      // className="button-container"
+      className={`button-container ${buttonPressed ? "pressed" : null}`}
       onMouseEnter={() => setButtonFocus(true)}
       onMouseLeave={() => setButtonFocus(false)}
     >
       {/* [details-container]: containts cursor reflection and smudges */}
-      <div className="details-container" ref={detailsContainerRef}>
+      <div
+        className="details-container"
+        ref={detailsContainerRef}
+        style={{ borderRadius: showBorderRadius ? "var(--border-radius)" : 0 }}
+      >
         {/* we need a hacky inner div here to clip the reflective cursor. setting 'overflow: hidden' and 'border-radius' on the parent div 
         negates the '-webkit-mask-image' from the smudges. seems like a bug... */}
         <div className="hacky-cursor-inner-div">
@@ -165,7 +175,7 @@ function Button({ roughness = 0, offset = 0, children }) {
           className="button-reflection"
           ref={reflectionRef}
           style={{
-            filter: `blur(${mappedRoughness}px) saturate(0.55) brightness(1.1)`,
+            filter: `blur(${mappedRoughness}px) saturate(0.4) brightness(1.1)`,
             objectPosition: `0px ${offset}px`,
           }}
         />

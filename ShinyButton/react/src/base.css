@@ -128,7 +128,7 @@ footer a:hover {
   transform: translate(-50%, -50%) scaleX(-1);
   object-fit: fill;
   filter: blur(24px);
-  opacity: 0.45;
+  opacity: 0.35;
   transition: opacity var(--transition), transform var(--transition);
 }
 

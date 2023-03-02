@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <Button roughness={0.5} offset={-200}>
+        <Button roughness={0.2} offset={-200}>
           Button
         </Button>
       </div>
@@ -44,7 +44,6 @@ function Button({ roughness = 0, offset = 0, children }) {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [buttonFocus, setButtonFocus] = useState(false);
   const [buttonPressed, setButtonPressed] = useState(false);
-  const [textHover, setTextHover] = useState(false);
   const [fingerprints, setFingerprints] = useState([]);
   const mappedRoughness = Math.round(scale(roughness, 0, 1, 0, 16));
 
@@ -179,15 +178,10 @@ function Button({ roughness = 0, offset = 0, children }) {
             objectPosition: `0px ${offset}px`,
           }}
         />
-        <span
-          className="text"
-          onMouseEnter={() => setTextHover(true)}
-          onMouseLeave={() => setTextHover(false)}
-        >
-          {children}
-        </span>
+
         <div className="shadow" />
       </div>
+      <div className="text">{children}</div>
     </div>
   );
 }

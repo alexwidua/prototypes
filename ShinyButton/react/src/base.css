@@ -46,6 +46,7 @@ footer a:hover {
   height: 100px;
   position: relative;
   transition: transform var(--transition), box-shadow var(--transition);
+  user-select: none;
 }
 
 .button-container.pressed {
@@ -65,7 +66,7 @@ footer a:hover {
 }
 
 .button.pressed {
-  box-shadow: 0px -4px 1px rgba(255, 255, 255, 0.5),
+  box-shadow: 0px -2px 1px rgba(255, 255, 255, 0.5),
     0px -1px 1px rgba(0, 0, 0, 0.5), 0px -4px 1px rgba(255, 255, 255, 0.5),
     0px 4px 1px rgba(255, 255, 255, 0.5), 0px 1px 1px rgba(0, 0, 0, 0.5),
     0px 4px 1px rgba(255, 255, 255, 0.5);
@@ -91,21 +92,23 @@ footer a:hover {
     inset 0px 4px 4px rgba(0, 0, 0, 0.2), inset 0px -6px 8px rgba(0, 0, 0, 0.1);
 }
 
-.button .text {
+.text {
+  pointer-events: none;
   color: rgba(0, 0, 0, 0.7);
   font-size: 48px;
   font-weight: 500;
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 1000;
+  z-index: 2000000;
   transform: translate(-50%, -50%);
   filter: drop-shadow(0px -1px 0px rgba(255, 255, 255, 0.5))
     drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.6));
   backdrop-filter: blur(2px);
+  cursor: pointer;
 }
 
-.button .text::selection {
+.text::selection {
   background-color: transparent;
 }
 
@@ -145,7 +148,7 @@ footer a:hover {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 10000;
+  z-index: 1000;
   overflow: hidden;
   /* border-radius: var(--border-radius); */
 }

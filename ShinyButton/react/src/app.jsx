@@ -146,7 +146,7 @@ function Button({ roughness = 0, offset = 0, children }) {
               opacity: buttonFocus ? 1 : 0,
             }}
           >
-            <CursorSVG text={textHover} />
+            <CursorSVG />
           </div>
         </div>
         {fingerprints.map((el, i) => (

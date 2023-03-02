@@ -61,6 +61,7 @@ footer a:hover {
     0px 16px 32px rgba(0, 0, 0, 0.125);
   transform: translateZ(0);
   transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
 }
 
 .button.pressed {
@@ -165,8 +166,8 @@ footer a:hover {
   height: 20px;
   width: 20px;
   position: absolute;
-  left: 0px;
-  top: 8px;
+  left: -2px;
+  top: 6px;
   filter: blur(2px);
 }
 

@@ -63,6 +63,7 @@ footer a:hover {
   transform: translateZ(0);
   transition: transform var(--transition), box-shadow var(--transition);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button.pressed {

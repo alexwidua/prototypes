@@ -174,14 +174,13 @@ function Button({ roughness = 0, offset = 0, children }) {
           className="button-reflection"
           ref={reflectionRef}
           style={{
-            filter: `blur(${mappedRoughness}px) saturate(0.4) brightness(1.1)`,
-            objectPosition: `0px ${offset}px`,
+            filter: `blur(${mappedRoughness}px) saturate(0.4) brightness(1.1)`
           }}
         />
 
         <div className="shadow" />
       </div>
-      <div className="text">{children}</div>
+      {/*<div className="text">{children}</div>*/}
     </div>
   );
 }
